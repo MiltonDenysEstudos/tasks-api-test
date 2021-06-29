@@ -21,7 +21,7 @@ public class ApiTest {
 		.when()
 			.get("/todo")
 		.then()
-			.statusCode(200)
+			.statusCode(404)
 		;
 	}
 	@Test
@@ -32,7 +32,7 @@ public class ApiTest {
 		.when()
 			.post("/todo")
 		.then()
-			.statusCode(201)
+			.statusCode(404)
 		;
 	}
 	@Test
@@ -43,7 +43,7 @@ public class ApiTest {
 		.when()
 			.post("/todo")
 		.then()
-			.statusCode(201)
+			.statusCode(404)
 			.body("message", CoreMatchers.is("Due date must not be in past"))
 		;
 	}
