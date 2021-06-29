@@ -12,7 +12,7 @@ public class ApiTest {
 	
 	@BeforeClass
 	public static void setup() {
-		RestAssured.baseURI = "http://localhost:8001/tasks-backend/todo";		
+		RestAssured.baseURI = "http://localhost:8001/tasks-backend";		
 	}
 	
 	@Test
@@ -27,7 +27,7 @@ public class ApiTest {
 	@Test
 	public void deveAdicionarTarefaComSucesso() {
 		RestAssured.given()
-			.body("{ \"task\": \"Teste via API\",\"dueDate\": \"2020-12-30\"}")
+			.body("{ \"task\": \"Teste via API\",\"dueDate\": \"2021-12-30\"}")
 			.contentType(ContentType.JSON)
 		.when()
 			.post("/todo")
@@ -43,7 +43,7 @@ public class ApiTest {
 		.when()
 			.post("/todo")
 		.then()
-			.statusCode(404)
+			.statusCode(400)
 			.body("message", CoreMatchers.is("Due date must not be in past"))
 		;
 	}
